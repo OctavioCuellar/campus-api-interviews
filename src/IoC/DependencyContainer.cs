@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using InterviewAPI.Persistence;
 using InterviewAPI.Dtos;
 using InterviewAPI.Services;
+using Microsoft.AspNetCore.Builder;
 
 namespace IoC
 {
@@ -18,5 +19,12 @@ namespace IoC
             
             return services;
         }
+        
+        public static IApplicationBuilder UseCustomMiddlewares(this IApplicationBuilder app)
+        {
+            app.UseGlobalExceptionHandler();
+            return app;
+        }
+        
     }
 }
